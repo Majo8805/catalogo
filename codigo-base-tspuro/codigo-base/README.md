@@ -375,3 +375,7 @@ const productos: Producto[] = [
   { id: 'P-012', nombre: 'Calcetas deportivas (3 pares)', precio: 179, categoria: 'ropa', imagen: '/img/producto-12.jpg', existencia: 25 },
 ];
 ```
+
+//Preguntas Practica 11
+- ¿Por qué el nombre de una etiqueta propia debe llevar guion?
+Para diferenciarla de las etiquetas normales de HTML.

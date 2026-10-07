@@ -40,9 +40,10 @@ let enCarrito = 0;
 
 // UN solo listener para las doce tarjetas: el evento sube hasta la rejilla.
 rejilla.addEventListener('agregar', (e) => {
+  const eventoCustom = e as CustomEvent;
   enCarrito++;
   cuenta.textContent = String(enCarrito);
-  console.log('Agregado:', e.detail.nombre, e.detail.precio);
+  console.log('Agregado:', eventoCustom.detail.nombre, eventoCustom.detail.precio);
 });
 
 // El mismo <boton-app> del encabezado, con otro uso.

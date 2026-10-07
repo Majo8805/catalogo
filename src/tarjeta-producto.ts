@@ -29,11 +29,21 @@ export class TarjetaProducto extends HTMLElement {
         <div class="cuerpo">
             <h3>${nombre}</h3>
             <p class="precio">$${precio}</p>
-            <p class="existencia">${existencia} disponibles</p>
-            <boton-app>Agregar al carrito</boton-app>
+            <p class="existencia">${agotado ? 'Agotado' : existencia + ' disponibles'}</p>
+            <boton-app ${agotado ? 'deshabilitado' : ''}>Agregar al carrito</boton-app>
         </div>
         </article>
         `;
+
+        const btn = this.shadowRoot!.querySelector('boton-app');
+        btn?.addEventListener('click', () => {
+            const evento = new CustomEvent('agregar', {
+                bubbles: true,
+                composed: true,
+                detail: { id, nombre, precio }
+            });
+            this.dispatchEvent(evento);
+        });
     }
 }
 

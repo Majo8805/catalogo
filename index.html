@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Deportiva ITSON · Componentes</title>
   <link rel="stylesheet" href="/src/estilos.css">
 </head>
+
 <body>
 
   <header class="encabezado">
@@ -17,7 +19,7 @@
 
     <div class="encabezado__carrito">
       <span>Carrito: <strong id="cuenta">0</strong></span>
-      <button-app variante="peligro" deshabilitado id="vaciar">Vaciar</button-app>
+      <boton-app variante="peligro" id="vaciar">Vaciar</boton-app>
     </div>
   </header>
 
@@ -28,12 +30,27 @@
     </section>
 
     <!-- Paso 2: aquí va la rejilla de tarjetas -->
-     <section class="rejilla" id="rejilla" aria-label="Productos"></section>
+    <section class="rejilla" id="rejilla" aria-label="Productos"></section>
 
     <!-- Tarea: aquí pueden montar sus dos componentes nuevos. -->
     <section class="tarea" id="tarea"></section>
+    <!-- Variante por defecto (usa la clase 'primario' automáticamente) -->
+    <boton-app>Boton Primario</boton-app>
+
+    <!-- Variante secundaria -->
+    <boton-app variante="secundario">Boton Secundario</boton-app>
+
+    <!-- Variante de peligro -->
+    <boton-app variante="peligro">Boton Peligro</boton-app>
+
+    <!-- Botón deshabilitado -->
+    <boton-app deshabilitado>Botón Deshabilitado</boton-app>
+
+    <!-- Botón con variante y deshabilitado al mismo tiempo -->
+    <boton-app variante="secundario" deshabilitado>Secundario Deshabilitado</boton-app>
   </main>
 
   <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>

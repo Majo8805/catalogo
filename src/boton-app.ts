@@ -2,7 +2,7 @@ import estilos from './boton-app.css?inline';
 
 export class BotonApp extends HTMLElement {
     //Entradas: 
-    static observedAttrributes = ['variante', 'deshabilitado'];
+    static observedAttributes = ['variante', 'deshabilitado'];
 
     private boton: HTMLButtonElement;
 
@@ -38,4 +38,4 @@ export class BotonApp extends HTMLElement {
     }
 }
 
-customElements.define('button-app', BotonApp);
+customElements.define('boton-app', BotonApp);
