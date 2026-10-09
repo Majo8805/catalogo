@@ -1,5 +1,7 @@
 import './boton-app'
 import './tarjeta-producto';
+import './tabla-generica';
+import './contador-cantidad';
 import type { Producto } from './tipos';
 
 const rejilla = document.querySelector<HTMLElement>('#rejilla')!;
@@ -33,21 +35,47 @@ for (const p of productos) {
   rejilla.append(tarjeta);
 }
 
-// NUEVO (Paso 3): el carrito.
+// NUEVO (Paso 3): el carrito y tabla generica
 const cuenta = document.querySelector<HTMLElement>('#cuenta')!;
 const vaciar = document.querySelector<HTMLElement>('#vaciar')!;
-let enCarrito = 0;
+const tablaCarrito = document.querySelector<any>('#tabla-carrito')!;
 
 // UN solo listener para las doce tarjetas: el evento sube hasta la rejilla.
+tablaCarrito.columnas = [
+  { clave: 'nombre', titulo: 'Producto' },
+  { clave: 'precio', titulo: 'Precio ($)' },
+  { clave: 'cantidad', titulo: 'Cantidad' }
+];
+
+// Arreglo para guardar los objetos del carrito
+let carrito: Array<{ nombre: string; precio: number; cantidad: number }> = [];
+
 rejilla.addEventListener('agregar', (e) => {
   const eventoCustom = e as CustomEvent;
-  enCarrito++;
-  cuenta.textContent = String(enCarrito);
-  console.log('Agregado:', eventoCustom.detail.nombre, eventoCustom.detail.precio);
+  const { nombre, precio } = eventoCustom.detail;
+  const productoExistente = carrito.find(item => item.nombre === nombre);
+
+  if (productoExistente) {
+    productoExistente.cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+
+  actualizarVistas();
+  console.log('Agregado:', nombre, precio);
 });
 
-// El mismo <boton-app> del encabezado, con otro uso.
 vaciar.addEventListener('click', () => {
-  enCarrito = 0;
-  cuenta.textContent = '0';
+  carrito = [];
+  actualizarVistas();
+});
+
+function actualizarVistas() {
+  const totalArticulos = carrito.reduce((total, item) => total + item.cantidad, 0);
+  cuenta.textContent = String(totalArticulos);
+  tablaCarrito.filas = carrito;
+}
+
+document.querySelector('contador-cantidad')?.addEventListener('cambio-cantidad', (e: any) => {
+    console.log('La nueva cantidad seleccionada es:', e.detail.nuevaCantidad);
 });

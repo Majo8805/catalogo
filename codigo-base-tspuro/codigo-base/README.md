@@ -376,6 +376,15 @@ const productos: Producto[] = [
 ];
 ```
 
-//Preguntas Practica 11
+Preguntas Practica 11
 - ¿Por qué el nombre de una etiqueta propia debe llevar guion?
 Para diferenciarla de las etiquetas normales de HTML.
+Preguntas Asignacion 3
+- ¿Por qué esta tabla se puede llamar «genérica»?
+Porque la tabla no sabe que tipo de informacion está mostrando, su unico trabajo es recibir una lista de datos y ponerlos en la tabla sin importar de que sean
+- ¿Qué tendría que cambiar para mostrar alumnos en lugar de productos?
+Solamente la informacion que se le envia desde main
+- Contrato de componente contador
+Que recibe: Recibe en que numero empezar, el limite minimo y el limite maximo
+Que avisa: Cada vez que el usuario presiona los botones de "+" o "-", el componente avisa el numero que se escogio
+Que guarda: Guarda su diseño,botones y la logica para sumar o restar para no pasarse de los limites
